@@ -20,6 +20,7 @@ RUN apt-get update -q && apt-get install -y git \
   subversion mercurial
 
 COPY scripts/install_tools.sh /root/install_tools.sh
+COPY scripts/xvfb.sh /root/xvfb
 RUN chmod +x /root/install_tools.sh
 RUN /root/install_tools.sh
 

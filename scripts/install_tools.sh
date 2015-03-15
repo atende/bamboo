@@ -2,6 +2,9 @@
 # Install xvfb (headless browser tests)
 apt-get update -q
 apt-get install -y xvfb
+cp /root/xvfb /etc/init.d/
+chmod +x /etc/init.d/xvfb
+chmod +s /etc/init.d/xvfb
 # Installing SBT for scala builds
 export SBT_VERSION=0.13.7
 curl -LSs https://dl.bintray.com/sbt/native-packages/sbt/$SBT_VERSION/sbt-${SBT_VERSION}.tgz -o /tmp/sbt.tgz
