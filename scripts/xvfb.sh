@@ -1,25 +1,20 @@
 #!/bin/bash
-XVFB=/usr/bin/Xvfb
-XVFBARGS=":1 -screen 0 1024x768x24 -ac +extension GLX +render -noreset"
-PIDFILE=/var/run/xvfb.pid
-case "$1" in
-  start)
-    echo -n "Starting virtual X frame buffer: Xvfb"
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $XVFB -- $XVFBARGS
-    echo "."
-    ;;
-  stop)
-    echo -n "Stopping virtual X frame buffer: Xvfb"
-    start-stop-daemon --stop --quiet --pidfile $PIDFILE
-    echo "."
-    ;;
-  restart)
-    $0 stop
-    $0 start
-    ;;
-  *)
-        echo "Usage: /etc/init.d/xvfb {start|stop|restart}"
-        exit 1
-esac
+#chkconfig: 345 95 50
+#description: Starts xvfb on display 99
+if [ -z "$1" ]; then
+echo "`basename $0` {start|stop}"
+   exit
+fi
 
-exit 0
+case "$1" in
+start)
+   if [ ! -f /tmp/.X99-lock ]; then
+     echo "Starting xvfb server"
+     /usr/bin/Xvfb :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+   fi
+;;
+
+stop)
+   killall Xvfb
+;;
+esac
