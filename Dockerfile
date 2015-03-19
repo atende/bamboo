@@ -1,10 +1,10 @@
-FROM atende/baseimage-jdk:jdk7
+FROM atende/baseimage-jdk
 
 MAINTAINER Giovanni Silva giovanni@atende.info
 
 ENV SOFTWARE_NAME=bamboo
 
-ENV SOFTWARE_VERSION=5.7.2
+ENV SOFTWARE_VERSION=5.8.1
 
 ENV SOFTWARE_PORT=8085
 
