@@ -1,4 +1,4 @@
-FROM atende/baseimage-jdk:jdk7
+FROM atende/baseimage-jdk
 
 MAINTAINER Giovanni Silva giovanni@atende.info
 
